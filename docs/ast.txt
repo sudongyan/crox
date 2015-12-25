@@ -1,0 +1,25 @@
+program:
+	['prog', stmts]
+
+stmt:
+	['if', expr, stmts, stmts?]
+	['each', expr, stmts, strKeyName?, strValName]
+	['forin', expr, stmts, strKeyName?, strValName]
+	['set', strName, expr]
+	['eval', expr, blnEncode]
+	['text', string]
+	['inc', strFileName]
+
+expr:
+	['lit', string]
+	['lit', number]
+	['lit', boolean]
+	['id', strName]
+	['.', expr, strProperty]
+	['[]', expr, exprProperty]
+	['()', expr, exprs]
+	['!', expr]
+	['u-', expr]
+	[binaryOp, expr, expr]
+
+binaryOp: * / % + - < > <= >= == != && ||
