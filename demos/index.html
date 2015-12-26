@@ -1,0 +1,14 @@
+---
+layout: post
+title: Demos
+---
+
+<ul>
+{% for category in site.categories %}{% if category[0] == 'demos' %}
+{% for post in category[1] reversed %}
+  <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+{% endfor %}
+{% endif %}{% endfor %}
+  <li><a href="http://gallery.kissyui.com/crox/1.0/demo/index-grunt.html">Kissy中使用Crox include</a></li>
+  <li style="margin-top:30px;"><a href="http://gallery.kissyui.com/crox/1.0/demo/index.html">Kissy中使用Crox的Demo (JSBin)</a></li>
+</ul>
