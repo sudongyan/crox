@@ -1,9 +1,9 @@
 /**
- * @preserve Crox v1.4.2
+ * @preserve Crox v1.4.3
  * https://github.com/thx/crox
  *
  * Released under the MIT license
- * md5: 1cfd10c3743c6995498cd2f7d0e2b828
+ * md5: f833184c125c428c92d517eb4c65698d
  */
 KISSY.add("crox", function(){function Class(base, constructor, methods) {
 	/// <param name="base" type="Function"></param>
@@ -294,7 +294,7 @@ var Lexer = function() {
 			for (var i = 0; i < a.length; ++i)
 				a[i] = a[i].replace(/[()*+?.[\]|]/g, '\\$&');
 			return RegExp(a.join('|'));
-		}(["!", "%", "&&", "(", ")", "*", "+", "-", ".", "/", "<", "<=", "=", ">", ">=", "[", "]", "||", "===", "!==", "==", "!=", ",", ":"]), function(a) {
+		}(["!", "%", "&&", "(", ")", "*", "+", "-", ".", "/", "<", "<=", "=", ">", ">=", "[", "]", "||", "===", "!==", "==", "!=", ",", ":", "?"]), function(a) {
 			return /[*/%]/.test(a) ? 'mul' : /[<>]/.test(a) ? 'rel' : /[!=]=/.test(a) ? 'eq' : a;
 		}]
 	];
@@ -314,6 +314,9 @@ var Lexer = function() {
 			[/{{#raw}}/, function(a) {
 				this.pushState('raw');
 				return a;
+			}],
+			[/{{<script>[\s\S]*?<\/script>}}/, function(a) {
+				return 'script';
 			}],
 			[/{{(?:#(?:if|each|forin)(?=\s))?/, function(a) {
 				this.pushState('{{');
