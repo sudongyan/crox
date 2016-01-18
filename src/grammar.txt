@@ -1,6 +1,8 @@
 #start program;
 program:
-	statements { $$ = ['prog', $1]; }
+	{ $$ = ['prog', [], []]; }
+|	program statement { $1[1].push($2); $$ = $1; }
+|	program script { $1[2].push($2.text.slice(10, -11)); $$ = $1; }
 ;
 statements:
 	{ $$ = []; }
@@ -106,6 +108,10 @@ LogicalOrExpression:
 	LogicalAndExpression
 |	LogicalOrExpression "||" LogicalAndExpression { $$ = [$2.text, $1, $3]; }
 ;
-expr:
+ConditionalExpression:
 	LogicalOrExpression
+|	LogicalOrExpression "?" ConditionalExpression ":" ConditionalExpression { $$ = ['cond', $1, $3, $5]; }
+;
+expr:
+	ConditionalExpression
 ;

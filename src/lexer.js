@@ -37,7 +37,7 @@ var Lexer = function() {
 			for (var i = 0; i < a.length; ++i)
 				a[i] = a[i].replace(/[()*+?.[\]|]/g, '\\$&');
 			return RegExp(a.join('|'));
-		}(["!", "%", "&&", "(", ")", "*", "+", "-", ".", "/", "<", "<=", "=", ">", ">=", "[", "]", "||", "===", "!==", "==", "!=", ",", ":"]), function(a) {
+		}(["!", "%", "&&", "(", ")", "*", "+", "-", ".", "/", "<", "<=", "=", ">", ">=", "[", "]", "||", "===", "!==", "==", "!=", ",", ":", "?"]), function(a) {
 			return /[*/%]/.test(a) ? 'mul' : /[<>]/.test(a) ? 'rel' : /[!=]=/.test(a) ? 'eq' : a;
 		}]
 	];
@@ -57,6 +57,9 @@ var Lexer = function() {
 			[/{{#raw}}/, function(a) {
 				this.pushState('raw');
 				return a;
+			}],
+			[/{{<script>[\s\S]*?<\/script>}}/, function(a) {
+				return 'script';
 			}],
 			[/{{(?:#(?:if|each|forin)(?=\s))?/, function(a) {
 				this.pushState('{{');

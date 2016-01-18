@@ -181,6 +181,8 @@ function codegen_js_tran(prog, encodeName, defaultEncode) {
 				return [exprToStr(x[1], isLogicalAnd), '&&', exprToStr(x[2], isEquality)];
 			case '||':
 				return [exprToStr(x[1], isLogicalOr), '||', exprToStr(x[2], isLogicalAnd)];
+			case 'cond':
+				return [exprToStr(x[1], isLogicalOr), '?', exprToStr(x[2], isCond), ':', exprToStr(x[3], isCond)];
 			default:
 				throw Error("unknown expr: " + x[0]);
 		}
@@ -206,6 +208,9 @@ function codegen_js_tran(prog, encodeName, defaultEncode) {
 	}
 	joinJsStr(body);
 
+	if (prog[2]) {
+		jsStr += prog[2].join(';');
+	}
 	//alert(posLog.join('\n'));
 	var strObj = new String(jsStr);
 	strObj.posLog = posLog;

@@ -61,8 +61,10 @@
 			<tr{{#if i%2===1}} class=odd{{/if}}>
 				<td>{{v.name}}</td>
 				<td>{{v.price}}</td>
-				</tr>
-				{{/each}}
+				</tr>{{test()}}
+				{{/each}}{{<script>
+				           	function test() { return "hello world"; }
+				           </script>}}
 		</table>
 	</textarea><br />
 	<textarea id="ta2" rows="10" cols="80"></textarea>

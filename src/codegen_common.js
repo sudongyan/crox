@@ -3,6 +3,7 @@ function isAtom(op) {
 	switch (op) {
 		case 'id':
 		case 'lit':
+		case 't':
 			return true;
 	}
 	return false;
@@ -54,4 +55,7 @@ function isLogicalOr(op) {
 }
 function changeExt(s, ext) {
 	return s.replace(/\.\w+$/, '.' + ext);
+}
+function isCond(op) {
+	return isLogicalOr(op) || op == 'cond';
 }
