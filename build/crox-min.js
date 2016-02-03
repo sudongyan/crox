@@ -1,5 +1,5 @@
 /*
- Crox v1.4.3
+ Crox v1.4.4
  https://github.com/thx/crox
 
  Released under the MIT license
@@ -36,5 +36,5 @@ b);a.push(d);return a}function n(a){return[a]}function u(a,b,c,d){return["()",a,
 function(a,b){a.push(b);return a},function(a,b,c,d,e){return["if",b,d]},function(a,b,c,d,e,f,g){return["if",b,d,f]},e,e,m,m,function(a,b,c,d,e,f){return["set","id"==c[0]?c[1]:c,e]},function(a,b,c){return["eval",b,!1]},function(a,b,c){return["eval",b,!0]},function(a){return["text",a]},function(a,b,c,d){return["inc",H(c.text)]},function(a){return H(a.text)},x,function(a){return a},function(a,b){return a+b},x,function(a,b,c){return b.text},,,,function(a){return["lit",H(a.text)]},function(a){return["lit",
 +a.text]},function(a){return["lit","true"==a.text]},function(a){return["id",a.text]},function(a,b,c){return b},,,function(a){return["null"]},function(a,b){return["array",[]]},function(a,b,c){return["array",b]},r,r,g,g,function(a){return 1},function(a,b){return a+1},function(a,b){return["object",[]]},function(a,b,c){return["object",b]},n,function(a,b,c){a.push(c);return a},function(a,b,c){return["init",a,c]},,function(a,b,c){return[".",a,c.text]},function(a,b,c,d){return["[]",a,c]},u,u,n,function(a,
 b,c){a.push(c);return a},,function(a,b){return["!",b]},function(a,b){return["u-",b]},,k,,k,k,,k,,k,,k,,k,,function(a,b,c,d,e){return["cond",a,c,e]}];A&&(p=function(a,b){var d=c[A[a]];return d[b]||d._});var z=0,G=[0],F=b.scan(),v=[],E={get:function(a){return v[v.length+a]},set:function(a,b){v[v.length+a]=b}};if(d)for(h in d)E[h]=d[h];for(;;)if(h=p(z,f[F.tag]))if(0<h)G.push(z=h),v.push(F),F=b.scan();else if(0>h&&-32768<h){var h=-h,z=C[h],w=z.length-1;G.length-=w;z=q[G[G.length-1]][z[0]];G.push(z);D[h]?
-(h=D[h].apply(E,v.splice(v.length-w,w)),v.push(h)):1!=w&&v.splice(v.length-w,w,null)}else return F.tag!=t[0]&&l(),v[0];else{h=[];for(w=0;w<B;++w)p(z,w)&&h.push(t[w]);l("find "+F.tag+"\nexpect "+h.join(" "))}}}();return{parse:N,compile:O,render:function(a,b){return O(a)(b)},version:"1.4.3"}}();"object"==typeof module&&module&&"object"==typeof module.exports?module.exports=m:"function"==typeof define&&(define.amd||define.cmd)?define(function(){return m}):"undefined"!=typeof KISSY&&KISSY.add(function(){return m});
+(h=D[h].apply(E,v.splice(v.length-w,w)),v.push(h)):1!=w&&v.splice(v.length-w,w,null)}else return F.tag!=t[0]&&l(),v[0];else{h=[];for(w=0;w<B;++w)p(z,w)&&h.push(t[w]);l("find "+F.tag+"\nexpect "+h.join(" "))}}}();return{parse:N,compile:O,render:function(a,b){return O(a)(b)},version:"1.4.4"}}();"object"==typeof module&&module&&"object"==typeof module.exports?module.exports=m:"function"==typeof define&&(define.amd||define.cmd)?define(function(){return m}):"undefined"!=typeof KISSY&&KISSY.add(function(){return m});
 u&&(u.Crox=m)})(this);
