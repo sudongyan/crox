@@ -32,7 +32,7 @@
         recorders.forEach(function(rec, index) {
             rec = relative(rec, options.modulePrefix);
             fn = fn.replace(placeholder(index), "\" + \n require('" + rec + ext + "')(root) + \n \"");
-        })        
+        })
         code = code.replace('{{code}}', fn);
         return code;
     }
@@ -54,7 +54,7 @@
 
         var code = TMPLS.CMD_TEMPLATE;
         code = compileToModule(options, tmpl, code);
-        
+
         return code;
     }
 
@@ -62,8 +62,10 @@
         var tmpl = fs.readFileSync(file, 'utf8');
 
         var code = TMPLS.COMMONJS_TEMPLATE;
-        code = compileToModule(options, tmpl, code, '.js');
-        
+        // code = compileToModule(options, tmpl, code, '.js');
+        // 移除扩展名，为fis 和 modjs 使用
+        code = compileToModule(options, tmpl, code);
+
         return code;
     }
 
@@ -72,7 +74,7 @@
 
         var code = TMPLS.AMD_TEMPLATE;
         code = compileToModule(options, tmpl, code);
-        
+
         return code;
     }
 
