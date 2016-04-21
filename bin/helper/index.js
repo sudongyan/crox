@@ -59,8 +59,8 @@
     }
 
     function compileToCommonJS(file, options) {
-        var tmpl = fs.readFileSync(file, 'utf8');
-
+        //        var tmpl = fs.readFileSync(file, 'utf8');
+        var tmpl = file; // 改为传入文件内容，为适应fis的接口 sudongyan@baidu.com 2016/421
         var code = TMPLS.COMMONJS_TEMPLATE;
         // code = compileToModule(options, tmpl, code, '.js');
         // 移除扩展名，为fis 和 modjs 使用
